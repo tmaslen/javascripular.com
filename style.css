@@ -1,0 +1,294 @@
+* {
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box; 
+}
+
+html {
+    font-size: 10px;
+}
+body {
+    background: #47a3da;
+    color: #fff; 
+    font-family: Cambria, Georgia, Times, Times New Roman, serif;
+    margin-top: 20px;
+    margin-top: 2rem;
+    margin-bottom: 60px;
+    margin-bottom: 6rem;
+    overflow-y: scroll;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+a:visited {
+    color: #fff;
+}
+
+a:focus,
+a:hover {
+    color: orange;
+}
+
+section {
+    margin: 0 auto; 
+    max-width: 1000px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+    margin-top: -5px;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.tagline {
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-top: -2px;
+    padding-bottom: 2px;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-top: -2px;
+    padding-bottom: 2px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+textarea {
+    font-size: 1.5rem;
+    line-height: 1rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+#regex {
+    display: block;
+    width: 100%;
+}
+.regex-holder {
+    float: left;
+    width: 89.8%;
+    overflow: hidden;
+}
+.regex-opts {
+    display: block;
+    float: right;
+    width: 8.1%;
+}
+
+.text-holder {
+    float: left;
+    width: 49%;
+}
+#text {
+    display: block;
+    width: 100%;
+}
+
+.matches-holder {
+    float: right;
+    width: 49%; 
+}
+
+#match-result {
+    font-size: 15px;
+    font-size: 1.5rem;
+    line-height: 15px;
+    line-height: 1.5rem;
+    padding: 10px 0 15px;
+    margin: 10px 0 20px;
+    margin: 1rem 0 2rem;
+}
+
+#match-result-holder {
+    display: none;
+}
+
+#match-captures-holder {
+    display: none;
+}
+
+footer {
+    background: #10689a; 
+    bottom: 0;
+    clear: both;
+    color: #fff;
+    font-size: 1.5rem;
+    left: 0;
+    line-height: 1.5rem;
+    padding: 2.0rem 0 1.5rem;
+    position: fixed;
+    right: 0;
+    text-align: center;
+}
+
+#match-result span {
+    background: orange;
+}
+
+#match-captures li {
+    font-size: 15px;
+    font-size: 1.5rem;
+    line-height: 15px;
+    line-height: 1.5rem;
+    margin-top: -1px;
+    padding-bottom: 1px;
+}
+
+#match-captures ol {
+    padding-left: 20px;
+}
+
+/*
+  PANELS
+*/
+.panel {
+    font-size: 1.5rem;
+    padding: 1em;
+}
+
+.panel--interactive {
+    display: none;
+}
+
+.panel--interactive .panel__title {
+    left: -10000px;
+    position: absolute;
+}
+
+.panel h3,
+.panel p,
+.panel dt,
+.panel dd {
+    opacity: 0.9;
+}
+
+.show {
+    display: block;
+}
+
+/*
+    TABS
+*/
+
+.panel__tabs {
+    border-bottom: 5px solid #10689a;
+    font-size: 1.3rem;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.panel__tab {
+    border-bottom: none;
+    cursor: pointer;
+    float: left;
+    list-style: none;
+    position: relative;
+    text-transform: uppercase;
+    width: 50%;
+}
+
+.panel__tab-link {
+    border-bottom: none;
+    display: block;
+    padding: 0.5em;
+}
+
+.panel__tab:focus:before {
+    content: "";
+    border: 2px solid orange;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+@media screen and (min-width: 440px) {
+    .panel__tab {
+        width: auto;
+    }
+}
+
+.selected {
+    background: #10689a;
+    color: white;
+}
+
+/*
+    HELP
+*/
+
+.js-regex-helper {
+    cursor: pointer;
+}
+.help {
+    overflow: hidden;
+}
+
+.help__title {
+    clear: left;
+    float: left;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    width: 50%;
+}
+
+.help__description {
+    line-height: 1.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+}
+
+.panel h3 {
+    padding: 0.5em;
+    text-transform: uppercase;
+}
+.panel p {
+    line-height: 1.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+}
+
+.panel code {
+    background: rgba(0,0,0,0.1);
+    font-family: courier;
+}
+
+@media screen and (min-width: 440px) {
+    .help__title {
+        clear: none;
+        width: 20%;
+    }
+    .help__description {
+        float: left;
+        padding-right: 2rem;
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .help__title {
+        clear: none;
+        width: 8%;
+    }
+    .help__description {
+        float: left;
+        width: 25.33%;
+    }
+}

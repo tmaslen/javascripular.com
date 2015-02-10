@@ -1,304 +1,142 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="js">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<title>JavaScript Regex Help - Javascripular</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="reset.css" />
-<style>
-html {
-	font-size: 10px;
-}
-body {
-	background: rgba(0, 0, 0, 0.0585938); 
-	font-family: Cambria, Georgia, Times, Times New Roman, serif;
-	margin-top: 10px;
-	margin-top: 1rem;
-}
-.main {
-	margin: 0 auto; 
-	max-width: 1000px;
-	overflow: hidden;
-}
-.main-inner {
-	margin: 0 10px;
-}
-.regex-holder {
-	overflow: hidden;
-}
-
-h1 {
-	font-size: 40px;
-	font-size: 4rem;
-	line-height: 40px;
-	line-height: 4rem;
-	margin-top: -5px;
-	padding-bottom: 5px;
-	text-align: center;
-	margin-bottom: 10px;
-	margin-bottom: 1rem;
-}
-
-.tagline {
-	font-size: 20px;
-	font-size: 2rem;
-	line-height: 20px;
-	line-height: 2rem;
-	margin-top: -2px;
-	padding-bottom: 2px;
-	text-align: center;
-	margin-bottom: 10px;
-	margin-bottom: 1rem;
-}
-
-.tagline a {
-	text-decoration: none;
-	border-bottom: 1px solid;
-}
-
-.tagline a:hover {
-	color: orange;
-	border-bottom: 1px solid;
-}
-
-h2 {
-	font-size: 20px;
-	font-size: 2rem;
-	line-height: 20px;
-	line-height: 2rem;
-	margin-top: -2px;
-	padding-bottom: 2px;
-	margin-bottom: 10px;
-	margin-bottom: 1rem;
-}
-
-textarea {
-	font-size: 15px;
-	font-size: 1.5rem;
-	line-height: 15px;
-	line-height: 1.5rem;
-	padding-top: 10px;
-	padding-top: 1rem;
-	margin-bottom: 20px;
-	margin-bottom: 2rem;
-}
-.regex-holder #regex {
-	display: block;
-	float: left;
-	width: 89.8%;
-}
-.regex-holder #flag {
-	display: block;
-	float: right;
-	width: 8.1%;
-}
-
-.text-holder {
-	float: left;
-	width: 49%;
-}
-.text-holder #text {
-	display: block;
-	width: 100%;
-}
-
-.matches-holder {
-	float: right;
-	width: 49%;	
-}
-
-#match-result {
-	font-size: 15px;
-	font-size: 1.5rem;
-	line-height: 15px;
-	line-height: 1.5rem;
-	padding: 10px 0 15px;
-	margin: 10px 0 20px;
-	margin: 1rem 0 2rem;
-}
-
-#match-result-holder {
-	display: none;
-}
-
-#match-captures-holder {
-	display: none;
-}
-
-.footer {
-	clear: both;
-	color: #666;
-	font-size: 15px;
-	font-size: 1.5rem;
-	line-height: 15px;
-	line-height: 1.5rem;
-	padding: 20px 0 15px;
-	margin: 10px 0;
-	margin: 1rem 0;
-	text-align: center;
-}
-.footer a {
-	color: #666;
-	text-decoration: none;
-	border-bottom: 1px solid;
-}
-
-.footer a:hover {
-	color: orange;
-	border-bottom: 1px solid;
-}
-
-#match-result span {
-	background: orange;
-}
-
-#match-captures li {
-	font-size: 15px;
-	font-size: 1.5rem;
-	line-height: 15px;
-	line-height: 1.5rem;
-	margin-top: -1px;
-	padding-bottom: 1px;
-}
-
-#match-captures ol {
-	padding-left: 20px;
-}
-
-</style>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="main">
-	<div class="main-inner">
-		<h1>Javascripular</h1>
-		<p class="tagline">Like <a href="http://www.rubular.com">Rubular</a>, but for JavaScript.</p>
-		<div class="regex-holder">
-			<h2>Enter Regex</h2>
-			<textarea id="regex"></textarea>
-			<textarea id="flag"></textarea>
-		</div>
-		<div class="text-holder">
-			<h2>Enter text to match</h2>
-			<textarea id="text"></textarea>
-		</div>
-		<div class="matches-holder">
-			<div id="match-result-holder">
-				<h2>Match result</h2>
-				<div id="match-result">&nbsp;</div>
-			</div>
-			<div id="match-captures-holder">
-				<h2>Match captures</h2>
-				<div id="match-captures"></div>
-			</div>
-		</div>
-		<footer>
-			<div class="footer">
-				<p>Created by <a href="http://www.twitter.com/tmaslen">@tmaslen</a></p>
-			</div>
-		</footer>
-	</div>
-</div>
-<script language="javascript">
 
-var regex = document.querySelector('#regex'),
-	flag = document.querySelector('#flag'),
-    text = document.querySelector('#text'),
-	matchCaptures = document.querySelector('#match-captures'),
-	matchCapturesHolder = document.querySelector('#match-captures-holder'),
-	matchResult = document.querySelector('#match-result'),
-	matchResultHolder = document.querySelector('#match-result-holder');
 
-regex.addEventListener('keyup', function(e) {
-	regexBuddy(regex.value, flag.value);
-}, false);
-flag.addEventListener('keyup', function(e) {
-	regexBuddy(regex.value, flag.value);
-}, false);
-text.addEventListener('keyup', function(e) {
-	regexBuddy(regex.value, flag.value);
-}, false);
+<header>
+    <h1>Javascripular</h1>
+    <p class="tagline">Like <a href="http://www.rubular.com">Rubular</a>, but for JavaScript.</p>
+</header>
 
-function regexBuddy(regexVal, flagVal) {
-	try {
-		if (flagVal) {
-			var result = text.value.match(new RegExp(regexVal, flagVal)); 
-		}
-		else {
-			var result = text.value.match(new RegExp(regexVal));
-		}
-	}
-	catch(e) {
-		parseOutputBad('Error');
-	}
-	manageOutput(result);
-}
 
-function manageOutput(result) {
-	matchResultHolder.style.display = 'block';
-	if (result == null) {
-		result = [];
-	}
-	renderSample(result);
-	if (
-		(result.length == 0) ||
-		(result[0] == '')
-	) {
-		matchCapturesHolder.style.display = 'none';
-		//parseOutputBad('No matches');
-	}
-	else if(result.length == 1) {
-		//matchCaptures.innerHTML = '';
-		//matchCaptures.className = '';
-		matchCapturesHolder.style.display = 'none';
-	}
-	else if(result.length >= 2) {
-		parseOutputGood(result);
-	}
-}
+<section>
+    <div class="regex-holder">
+        <h2>Enter Regex</h2>
+        <textarea id="regex"></textarea>
+    </div>
+    <div class="regex-opts">
+        <h2>Opts</h2>
+        <textarea id="flag"></textarea>
+    </div>
+    <div class="text-holder">
+        <h2>Enter text to match</h2>
+        <textarea id="text"></textarea>
+    </div>
+    <div class="matches-holder">
+        <div id="match-result-holder">
+            <h2>Match result</h2>
+            <div id="match-result">&nbsp;</div>
+        </div>
+        <div id="match-captures-holder">
+            <h2>Match captures</h2>
+            <div id="match-captures"></div>
+        </div>
+    </div>
+</section>
 
-function parseOutputBad(msg) {
-	matchCaptures.innerHTML = '<ol><li>' + msg + '</li></ol>';
-	matchCaptures.className = 'bad';
-}
 
-function parseOutputGood(result) {
-	matchResult.style.display = 'block';
-	var outputString = '';
-	for(var i = 0, len = result.length; i < len; i++) {
-		outputString += '<li>' + result[i] + '</li>';
-	}	
-	matchCaptures.className = 'good';
-	matchCaptures.innerHTML = '<ol>' + outputString + '</ol>';
-	matchCapturesHolder.style.display = 'block';
-}
+<section>
+    <div class="panels">
+        <div class="panel panel--help">
+            <h2 class="panel__title" data-panel="panel--help">Regex help</h2>
+            <p>Click an entry to see it in action:</p>
+            <dl class="help">
+                <dt class="help__title js-regex-helper" data-regex="[abc]" data-text="abcdef">[abc]</dt>
+                <dd class="help__description">A single character of: a, b, or c</dd>
+                <dt class="help__title js-regex-helper" data-regex="[^abc]" data-text="abcdef">[^abc]</dt>
+                <dd class="help__description">Any single character except: a, b, or c</dd>
+                <dt class="help__title js-regex-helper" data-regex="[x-z]" data-text="abcy">[a-z]</dt>
+                <dd class="help__description">Any single character in the range a-z</dd>
+                <dt class="help__title js-regex-helper" data-regex="[d-fx-z]" data-text="abcdefxyz">[a-zA-Z]</dt>
+                <dd class="help__description">Any single character in the range a-z or A-Z</dd>
+                <dt class="help__title js-regex-helper" data-regex="^a" data-text="abcabc">^</dt>
+                <dd class="help__description">Start of line</dd>
+                <dt class="help__title js-regex-helper" data-regex="c$" data-text="abcabc">$</dt>
+                <dd class="help__description">End of line</dd>
+                <dt class="help__title js-regex-helper" data-regex="\A" data-text="abcabc">\A</dt>
+                <dd class="help__description">Start of string</dd>
+                <dt class="help__title js-regex-helper" data-regex="\z" data-text="abcabc">\z</dt>
+                <dd class="help__description">End of string</dd>
+                <dt class="help__title js-regex-helper" data-regex="." data-text="abcabc">.</dt>
+                <dd class="help__description">Any single character</dd>
+                <dt class="help__title js-regex-helper" data-regex="\s" data-text="abc abc">\s</dt>
+                <dd class="help__description">Any whitespace character</dd>
+                <dt class="help__title js-regex-helper" data-regex="\S" data-text="   a   ">\S</dt>
+                <dd class="help__description">Any non-whitespace character</dd>
+                <dt class="help__title js-regex-helper" data-regex="\d" data-text="abc1abc">\d</dt>
+                <dd class="help__description">Any digit</dd>
+                <dt class="help__title js-regex-helper" data-regex="\D" data-text="123a123">\D</dt>
+                <dd class="help__description">Any non-digit</dd>
+                <dt class="help__title js-regex-helper" data-regex="\w" data-text="   _   ">\w</dt>
+                <dd class="help__description">Any word character (letter, number, underscore)</dd>
+                <dt class="help__title js-regex-helper" data-regex="\W" data-text="a1_ a1_">\W</dt>
+                <dd class="help__description">Any non-word character</dd>
+                <dt class="help__title js-regex-helper" data-regex="\b" data-text="foo bar">\b</dt>
+                <dd class="help__description">Any word boundary</dd>
+                <dt class="help__title js-regex-helper" data-regex="(456)" data-text="123456789">(...)</dt>
+                <dd class="help__description">Capture everything enclosed</dd>
+                <dt class="help__title js-regex-helper" data-regex="(a|b)" data-text="123b789">(a|b)</dt>
+                <dd class="help__description">a or b</dd>
+                <dt class="help__title js-regex-helper" data-regex="a?" data-text="123a789">a?</dt>
+                <dd class="help__description">Zero or one of a</dd>
+                <dt class="help__title js-regex-helper" data-regex="a*" data-text="123aa789">a*</dt>
+                <dd class="help__description">Zero or more of a</dd>
+                <dt class="help__title js-regex-helper" data-regex="a+" data-text="123aaa789">a+</dt>
+                <dd class="help__description">One or more of a</dd>
+                <dt class="help__title js-regex-helper" data-regex="a{3}" data-text="123aaaa789">a{3}</dt>
+                <dd class="help__description">Exactly 3 of a</dd>
+                <dt class="help__title js-regex-helper" data-regex="a{3,}" data-text="123aaaa789">a{3,}</dt>
+                <dd class="help__description">3 or more of a</dd>
+                <dt class="help__title js-regex-helper" data-regex="a{3,6}" data-text="123aaaaaaaa789">a{3,6}</dt>
+                <dd class="help__description"> Between 3 and 6 of a</dd>
+            </dl>
+            <p>options:</p>
+            <dl class="help">
+                <dt class="help__title" data-regex="a" data-text="A" data-flag="i">i</dt>
+                <dd class="help__description">case insensitive</dd>
+                <dt class="help__title" data-regex="aa" data-text="a\na" data-flag="m">m</dt>
+                <dd class="help__description">make dot match newlines</dd>
+                <dt class="help__title" data-regex="ab" data-text="a b" data-flag="x">x</dt>
+                <dd class="help__description">ignore whitespace in regex</dd>
+                <dt class="help__title">o</dt>
+                <dd class="help__description">perform #{...} substitutions only once</dd>
+            </dl>
+        </div>
+        <div class="panel panel--common">
+            <h2 class="panel__title" data-panel="panel--common">Common regexs</h2>
+            <h3 class="js-regex-helper" data-regex="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" data-text="tom_maslen@hotmail.com">Email</h3>
+            <p>This regex looks like the terminal output of a linux engineer as he fits all over his keyboard:<br /><code>^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$</code><br />Its messy, but it does the trick.</p>
+            <h3>User agent sniffing</h3>
+            <p>User agent sniffing is for douchebags and server dorks who don't like responsive web design but also for cool developers who are forced to do user agent sniffing cus their boss doesn't believe in progressive enhancement.  Here's a few I've had to do in my time.</p>
+            <p>Check for IE10:<br /><code>(/MSIE 10/).test(navigator.userAgent)</code></p>
+            <!--ul>
+                <li class="js-regex-helper" data-regex="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" data-text="tom_maslen@hotmail.com">Email</li>
+                <li>URL</li>
+                <li>host check</li>
+                <li>Path match</li>
+                <li>UA match</li>
+                <li>Match all whitespace in order to remove it</li>
+                <li>Valid postcode</li>
+                <li>Valid date of birth</li>
+            </ul-->
+        </div>
+    </div>
+</section>
 
-function renderSample(result) {
-	var output = '',
-	    textVal = text.value,
-	    matchStart,
-	    matchEnd;
-	
-	if(result.length > 1) {
-		result = removeFirstItem(result);
-	}
 
-	for(var i = 0, len = result.length; i < len; i++) {
-		matchStart = textVal.indexOf(result[i]);
-		matchEnd = result[i].length;
-		output += textVal.substr(0, matchStart) + '<span>' + textVal.substr(matchStart, matchEnd) + '</span>';
-		textVal = textVal.substr(matchStart+matchEnd);
-	}
-	output += textVal;
-	matchResult.innerHTML = output+'&nbsp;';
-}
+<footer>
+    <p>Created by <a href="http://www.twitter.com/tmaslen">@tmaslen</a></p>
+</footer>
 
-function removeFirstItem(arr) {
-	var newArr = [];
-	for(var x = 1, len = arr.length; x < len; x++) {
-    	newArr.push(arr[x]);
-	}
-	return newArr;
-}
-</script>
 
+<script type="text/javascript" src="js/vendors/ender.js"></script>
+<script type="text/javascript" src="js/modules/javascripular.js"></script>
 <script type="text/javascript">
 if (window.location.host == 'www.javascripular.com') {
   var _gaq = _gaq || [];
@@ -315,3 +153,6 @@ if (window.location.host == 'www.javascripular.com') {
 
 </body>
 </html>
+
+
+
