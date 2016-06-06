@@ -71,13 +71,17 @@ h2 {
 
 textarea {
     font-size: 1.5rem;
-    line-height: 1rem;
+    line-height: 2rem;
     padding: 1rem;
     margin-bottom: 2rem;
 }
 #regex {
     display: block;
+    height: 4rem;
     width: 100%;
+}
+#flag {
+    height: 4rem;
 }
 .regex-holder {
     float: left;
@@ -96,6 +100,7 @@ textarea {
 }
 #text {
     display: block;
+    height: 8rem;
     width: 100%;
 }
 

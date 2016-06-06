@@ -158,7 +158,7 @@
     }
 
     function parseOutputBad(msg) {
-        matchCaptures.innerHTML = '<ol><li>' + msg + '</li></ol>';
+        matchCaptures.innerHTML = '<ol><li>' + escapeHTML(msg) + '</li></ol>';
         matchCaptures.className = 'bad';
     }
 
@@ -166,11 +166,18 @@
         matchResult.style.display = 'block';
         var outputString = '';
         for(var i = 0, len = result.length; i < len; i++) {
-            outputString += '<li>' + result[i] + '</li>';
+            outputString += '<li>' + escapeHTML(result[i]) + '</li>';
         }   
         matchCaptures.className = 'good';
         matchCaptures.innerHTML = '<ol>' + outputString + '</ol>';
         matchCapturesHolder.style.display = 'block';
+    }
+
+    function escapeHTML(html) {
+        var escape = document.createElement('textarea');
+        escape.textContent = html;
+        console.log(html);
+        return escape.innerHTML;
     }
 
     function renderSample(result) {
@@ -186,8 +193,8 @@
         for(var i = 0, len = result.length; i < len; i++) {
             matchStart = textVal.indexOf(result[i]);
             matchEnd = result[i].length;
-            output += textVal.substr(0, matchStart) + '<span>' + textVal.substr(matchStart, matchEnd) + '</span>';
-            textVal = textVal.substr(matchStart+matchEnd);
+            output += escapeHTML(textVal.substr(0, matchStart)) + '<span>' + escapeHTML(textVal.substr(matchStart, matchEnd)) + '</span>';
+            textVal = escapeHTML( textVal.substr(matchStart+matchEnd) );
         }
         output += textVal;
         matchResult.innerHTML = output+'&nbsp;';
